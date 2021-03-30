@@ -3,12 +3,14 @@ import sys
 
 onetwosevendict={}
 localhostdict={}
+
 complete_header_list = [
     "Proxy-Host","Request-Uri","X-Forwarded","X-Forwarded-By","X-Forwarded-For",
     "X-Forwarded-For-Original","X-Forwarded-Host","X-Forwarded-Server","X-Forwarder-For",
-    "X-Forward-For","Base-Url","Http-Url","Proxy-Url","Redirect","Real-Ip","Referer","Referer",
-    "Referrer","Refferer","Uri","Url","X-Host","X-Http-Destinationurl","X-Http-Host-Override",
-    "X-Original-Remote-Addr","X-Original-Url","X-Proxy-Url","X-Rewrite-Url","X-Real-Ip","X-Remote-Addr"
+    "X-Forward-For","Base-Url","Http-Url","Proxy-Url","Redirect","Real-Ip","Referer",
+    "Referrer","Uri","Url","X-Host","X-Http-Destinationurl","X-Http-Host-Override",
+    "X-Original-Remote-Addr","X-Original-Url","X-Proxy-Url","X-Rewrite-Url","X-Real-Ip","X-Remote-Addr", "X-Proxy-URL", "X-Original-Host", "X-Originally-Forwarded-For", "X-Forwarded-For-Original",
+    "X-Originating-Ip","X-Ip", "X-Client-Ip"
     ]
 for i in complete_header_list:
     onetwosevendict.update({i: "127.0.0.1"})
@@ -42,3 +44,4 @@ for x, y in localhostdict.items():
        counter+=1
 if counter == 0:
    print("No relevant results for localhost tests")
+
