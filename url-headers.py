@@ -20,4 +20,23 @@ for x, y in headers.items():
        print(r.request.headers)
        counter+=1
 if counter == 0:
-   print("No relevant results")
+   print("No relevant results for 127.0.0.1 tests")
+headers = {"X-Original-Url":"localhost",
+           "X-Forwarded-Server":"localhost",
+           "X-Host":"localhost",
+           "X-Forwarded-Host":"localhost",
+           "X-Real-IP":"localhost",
+           "X-Forwarded-For":"localhost"}
+counter=0
+
+r_first= requests.get(sys.argv[1]) #copy as Python request in Burp if you are testing an authenticated thing/POST request/API
+for x, y in headers.items():
+    z = {x:y}
+    r = requests.get(sys.argv[1], headers=z)
+    resta = len(r.text) - len(r_first.text)
+    if r.status_code != r_first.status_code or resta > 50:
+       print("Difference found in :" + sys.argv[1] + " with headers:")
+       print(r.request.headers)
+       counter+=1
+if counter == 0:
+   print("No relevant results for localhost tests")
